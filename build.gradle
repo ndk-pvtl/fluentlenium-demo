@@ -1,0 +1,36 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.5.RELEASE'
+    id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'io.pivotal.fluentleum'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    testCompile "org.fluentlenium:fluentlenium-core:4.2.2"
+    testCompile 'org.fluentlenium:fluentlenium-junit:4.2.2'
+    testCompile 'org.fluentlenium:fluentlenium-assertj:4.2.2'
+    testCompile 'org.fluentlenium:fluentlenium-junit-jupiter:4.2.2'
+    testCompile "org.seleniumhq.selenium:selenium-chrome-driver:3.141.59"
+}
